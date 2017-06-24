@@ -254,28 +254,27 @@ open class GLNotificationBar: NSObject {
             notificationBar.body.attributedText = attributeString
         }
 
-        var infoDic:Dictionary = Bundle.main.infoDictionary!
-        appName = infoDic["CFBundleName"] as? String
-        notificationBar.header.text = appName
-        
-        if infoDic["CFBundleIcons"] != nil {
-            infoDic = infoDic["CFBundleIcons"] as! Dictionary
-            infoDic = infoDic["CFBundlePrimaryIcon"] as! Dictionary
-            appIconName = (infoDic["CFBundleIconFiles"]! as AnyObject).object(at: 0) as! String
-            notificationBar.appIcon.image = UIImage(named: appIconName)
-            
-        } else {
-            notificationBar.appIcon.layer.borderColor = UIColor.gray.cgColor
-            notificationBar.appIcon.layer.borderWidth = 1.0
-
-            appIconName = ""
-            print("Oops... no app icon found")
-        }
-        
-        
-        notificationBar.appIcon.layer.cornerRadius = 5.0
-        notificationBar.appIcon.clipsToBounds = true
-        
+//        var infoDic:Dictionary = Bundle.main.infoDictionary!
+//        appName = infoDic["CFBundleName"] as? String
+//        notificationBar.header.text = appName
+//        
+//        if infoDic["CFBundleIcons"] != nil {
+//            infoDic = infoDic["CFBundleIcons"] as! Dictionary
+//            infoDic = infoDic["CFBundlePrimaryIcon"] as! Dictionary
+//            appIconName = (infoDic["CFBundleIconFiles"]! as AnyObject).object(at: 0) as! String
+//            notificationBar.appIcon.image = UIImage(named: appIconName)
+//            
+//        } else {
+//            notificationBar.appIcon.layer.borderColor = UIColor.gray.cgColor
+//            notificationBar.appIcon.layer.borderWidth = 1.0
+//
+//            appIconName = ""
+//            print("Oops... no app icon found")
+//        }
+//        
+//        
+//        notificationBar.appIcon.layer.cornerRadius = 5.0
+//        notificationBar.appIcon.clipsToBounds = trueZ
         
         notificationBar.visualEffectView.layer.cornerRadius = 14.0
         notificationBar.visualEffectView.clipsToBounds = true
@@ -341,10 +340,10 @@ open class GLNotifyAction : NSObject {
 class CustomView : UIView {
     //MARK: Outlets:
     @IBOutlet fileprivate var view:UIView?
-    @IBOutlet weak var header: UILabel!
+
     @IBOutlet weak var body: UILabel!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
-    @IBOutlet weak var appIcon: UIImageView!
+
     @IBOutlet weak var notificationStyleIndicator: UIView!
     
     //MARK: Variables:
@@ -697,7 +696,7 @@ class CustomView : UIView {
             
             if gestureRecognizer.view?.frame.origin.y  > (gestureRecognizer.view?.frame.size.height)! {
                 self.removeFromSuperview()
-                setUpDetailedNotificationBar(header.text, body: body.text, action: [])
+                setUpDetailedNotificationBar("", body: body.text, action: [])
                 return
             }
             
