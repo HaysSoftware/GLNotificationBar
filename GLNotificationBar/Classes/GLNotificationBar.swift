@@ -279,8 +279,8 @@ open class GLNotificationBar: NSObject {
         notificationBar.visualEffectView.layer.cornerRadius = 14.0
         notificationBar.visualEffectView.clipsToBounds = true
         
-        let didSelectMessage = UITapGestureRecognizer(target: self, action: #selector(CustomView.didSelectmessage(_:)))
-        notificationBar.addGestureRecognizer(didSelectMessage)
+//        let didSelectMessage = UITapGestureRecognizer(target: self, action: #selector(CustomView.didSelectmessage(_:)))
+//        notificationBar.addGestureRecognizer(didSelectMessage)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: { 
             let frame = CGRect(x: 0, y: 0, width: frameWidth, height: BAR_HEIGHT)
@@ -394,7 +394,7 @@ class CustomView : UIView {
         notificationStyleIndicator.alpha = 0.5
         
         //Blurry Back ground
-        let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(CustomView.didSelectmessage(_:)))
+        let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(didSelectmessage(_:)))
         backgroudView.addGestureRecognizer(tapGesture)
         backgroudView.effect = UIBlurEffect(style: .dark)
         backgroudView.autoresizingMask = [.flexibleWidth,.flexibleHeight] // support for device rotation
@@ -415,7 +415,7 @@ class CustomView : UIView {
         detailedbanner.layer.cornerRadius = 14.0
         detailedbanner.clipsToBounds = true
         
-        let didSelectMessage = UITapGestureRecognizer(target: self, action: #selector(CustomView.didSelectmessage(_:)))
+        let didSelectMessage = UITapGestureRecognizer(target: self, action: #selector(didSelectmessage(_:)))
         detailedbanner.addGestureRecognizer(didSelectMessage)
         
         mainView.addSubview(detailedbanner)
